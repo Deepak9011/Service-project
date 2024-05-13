@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "378426238473",
+    "project_id": "disaa-123",
+    "storage_bucket": "disaa-123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378426238473:android:7d2b6c0c25e37a53253ad8",
+        "android_client_info": {
+          "package_name": "com.example.disaa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY1qz57VwoTZNRhCfBE9ZIAVaGLdrZtxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
