@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,8 +46,11 @@ public class Login extends AppCompatActivity {
         progressBar_ProgressBar = findViewById(R.id.progressBar);
         registerNow_TextView = findViewById(R.id.registerNow);
         loginGooglesignIn_Button = findViewById(R.id.loginGooglesignIn);
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.id.)).requestEmail().build();
         gsc = GoogleApiClient.getClient(this, gso);
+        mggoglesignInClient  = GoogleSignIn.getClient(this, gso);
+//
+
 
         registerNow_TextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +105,17 @@ public class Login extends AppCompatActivity {
         loginGooglesignIn_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                BeginSignInRequest signInRequest = BeginSignInRequest.builder()
+                        .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                                .setSupported(true)
+                                // Your server's client ID, not your Android client ID.
+                                .setServerClientId(getString(R.string.web_client_id))
+                                // Only show accounts previously used to sign in.
+                                .setFilterByAuthorizedAccounts(true)
+                                .build())
+                        .build();
+
+
                 return;
             }
         });
